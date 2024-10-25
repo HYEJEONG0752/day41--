@@ -1,0 +1,17 @@
+<!-- views/detail.ejs -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title><%= review.user.username %>님의 리뷰</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1><%= review.user.username %>님의 리뷰</h1>
+    <p>평점: <%= review.rating %> / 5</p>
+    <p>작성일: <%= review.createdAt.toDateString() %></p>
+    <p>내용: <%= review.comment %></p>
+    <br>
+    <a href="/">홈으로 돌아가기</a>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>리뷰 목록</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>사용자 리뷰</h1>
+    <% if (currentUser) { %>
+        <p>안녕하세요, <%= currentUser.username %>님! <a href="/reviews/new">리뷰 작성</a> | <a href="/logout">로그아웃</a></p>
+    <% } else { %>
+        <p><a href="/login">로그인</a> | <a href="/signup">회원가입</a></p>
+    <% } %>
+    <ul>
+        <% if (reviews.length === 0) { %>
+        <li>등록된 리뷰가 없습니다.</li>
+        <% } else { %>
+        <% reviews.forEach(review => { %>
+            <li>
+            <h2><a href="/reviews/<%= review._id %>"><%= review.user.username %>님의 리뷰</a></h2>
+            <p>평점: <%= review.rating %> / 5</p>
+            <p>작성일: <%= review.createdAt.toDateString() %></p>
+            </li>
+        <% }) %>
+        <% } %>
+    </ul>
+</body>
+</html>
