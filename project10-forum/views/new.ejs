@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>새 포스트 작성</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>새 포스트 작성</h1>
+    <% if (error) { %>
+        <p class="error"><%= error %></p>
+    <% } %>
+    <form action="/posts/new" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <label for="title">제목:</label>
+        <input type="text" id="title" name="title" required>
+        <br>
+        <label for="content">내용:</label>
+        <textarea id="content" name="content" required></textarea>
+        <br>
+        <button type="submit">작성하기</button>
+    </form>
+    <br>
+    <a href="/">홈으로 돌아가기</a>
+</body>
+</html>

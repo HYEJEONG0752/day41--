@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title><%= post.title %> 상세 정보</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1><%= post.title %></h1>
+    <p>작성자: <%= post.author.username %></p>
+    <p>작성일: <%= post.createdAt.toDateString() %></p>
+    <p>내용:</p>
+    <p><%= post.content %></p>
+    <% if (currentUser && currentUser.id === post.author._id.toString()) { %>
+        <a href="/posts/<%= post._id %>/edit">포스트 수정</a>
+    <% } %>
+    <br>
+    <a href="/">홈으로 돌아가기</a>
+</body>
+</html>

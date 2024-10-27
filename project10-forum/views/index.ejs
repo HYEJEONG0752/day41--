@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>포럼 - 포스트 목록</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>포럼 - 포스트 목록</h1>
+    <% if (currentUser) { %>
+        <p>안녕하세요, <%= currentUser.username %>님! <a href="/posts/new">새 포스트 작성</a> | <a href="/logout">로그아웃</a></p>
+    <% } else { %>
+        <p><a href="/login">로그인</a> | <a href="/signup">회원가입</a></p>
+    <% } %>
+    <ul>
+        <% if (posts.length === 0) { %>
+        <li>작성된 포스트가 없습니다.</li>
+        <% } else { %>
+        <% posts.forEach(post => { %>
+            <li>
+            <h2><a href="/posts/<%= post._id %>"><%= post.title %></a></h2>
+            <p>작성자: <%= post.author.username %></p>
+            <p>작성일: <%= post.createdAt.toDateString() %></p>
+            </li>
+        <% }) %>
+        <% } %>
+    </ul>
+</body>
+</html>
